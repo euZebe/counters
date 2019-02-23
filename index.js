@@ -1,8 +1,12 @@
+function toStyledDigit(digit) {
+    return `<span class="number">${digit}</span>`;
+}
+
 function splitNumber(number) {
     return number
         .toString()
         .split("")
-        .map(digit => `<span class="number">${digit}</span>`)
+        .map(toStyledDigit)
         .join("");
 }
 
@@ -14,4 +18,6 @@ let NUMBER = 1;
 
 updateValue(NUMBER);
 
-setInterval(() => updateValue(++NUMBER), 200);
+const randomNumber = () => Math.floor(Math.random() * 20);
+
+setInterval(() => updateValue(NUMBER += randomNumber()), 200);
